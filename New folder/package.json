@@ -1,0 +1,29 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "Learning Express",
+  "keywords": [
+    "Learning"
+  ],
+  "homepage": "https://github.com/AunMohammad254/express.js#readme",
+  "bugs": {
+    "url": "https://github.com/AunMohammad254/express.js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AunMohammad254/express.js.git"
+  },
+  "license": "ISC",
+  "author": "Aun",
+  "type": "commonjs",
+  "main": "./assets/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./assets/app.js",
+    "dev": "nodemon ./assets/app.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10"
+  }
+}
