@@ -1,19 +1,58 @@
 const express = require('express');
-const app = express();
-const port = process.env.PORT || 3000;
+const { connectDB } = require('../config/database');
+const { User } = require('../model/user');
 
-// Middleware for parsing JSON and urlencoded data
+const app = express()
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// CRUD
 
-// Basic route
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+
+
+app.use('/addUser', async (req, res) => {
+    const data = req.body
+    try {
+        const user = await User(data)
+
+        await user.save()
+
+        res.send({
+            message: 'User added successfully !',
+            data: user
+        })
+    } catch (error) {
+        res.status(400).send({
+            message: 'Error adding user',
+            error: error.message
+        })
+    }
+})
+
+
+app.use('/editUser/:id', async (req, res) => {
+    const data = req.body
+    const { id } = req.params
+    try {
+        const user = await User.findByIdAndUpdate(id, data)
+        res.send({
+            message: 'User updated successfully !',
+            data: user
+        })
+    } catch (error) {
+        res.status(400).send({
+            message: 'Error updating user',
+            error: error.message
+        })
+    }
+})
+
+
+connectDB().then(() => {
+    console.log('Database connected');
+
+    app.listen(3000, () => {
+        console.log('Server is running on port 3000');
+    });
+
+}).catch((error) => {
+    console.log('Database connection error:', error)
 });
-
-// Start server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
-
-module.exports = app;

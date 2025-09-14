@@ -3,6 +3,24 @@
     "body-parser": "^2.2.0",
     "express": "^5.1.0",
     "mongodb": "^6.19.0",
+    "mongoose": "^8.4.4",
     "nodemon": "^3.1.10"
-  }
+  },
+  "name": "express-mongo",
+  "version": "1.0.0",
+  "description": "Learning Express and MongoDB",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "watch": "nodemon --watch 'src/*.js' --exec 'node src/app.js'",
+    "watch:app": "nodemon --watch 'src/app.js' --exec 'node src/app.js'",
+    "watch:db": "nodemon --watch 'src/db/*.js' --exec 'node src/app.js'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
 }
